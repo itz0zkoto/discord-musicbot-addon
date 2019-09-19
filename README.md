@@ -1,7 +1,7 @@
 <div align="center">
   <p>
-    <a href="https://nodei.co/npm/discord.js-musicbot-addon
-/"><img src="https://nodei.co/npm/discord.js-musicbot-addon.png?downloads=true&stars=true" alt="NPM info" /></a>
+    <a href="https://nodei.co/npm/discord-musicbot-addon
+/"><img src="https://nodei.co/npm/discord-musicbot-addon.png?downloads=true&stars=true" alt="NPM info" /></a>
   </p>
 </div>  
 
@@ -43,12 +43,10 @@ Required for voice. Discord.js _prefers_ node-opus.
 
 __Installation:__  
 * `npm install discord.js-musicbot-addon`  
-If you have troubles installing, see [this link](https://github.com/DarkoPendragon/discord.js-musicbot-addon/wiki/Installation-&-Troubleshooting) or [join the discord server](https://discordapp.com/invite/JHMtwhG).
-Note that the NPM version will be *slightly behind* the GitHub version.
 
 # Examples
 ***  
-See [this page](https://github.com/DarkoPendragon/discord.js-musicbot-addon/blob/master/examples/examples.md) on the repo for examples.
+See [this page](https://github.com/1mgr007/discord-musicbot-addon/blob/master/examples/examples.md) on the repo for examples.
 
 # Options & Config.
 ***
