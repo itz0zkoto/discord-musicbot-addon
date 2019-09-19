@@ -20,6 +20,7 @@ __The commands available are: (default names)__
 * `remove [position]`: Remove a song from the queue by position.
 * `volume`: Adjust the playback volume between 1 and 200.
 * `leave`: Clears the song queue and leaves the channel.
+* `join`: Joined the channel.
 * `clearqueue`: Clears the song queue.
 * `np`: Show the current playing song.  
 
