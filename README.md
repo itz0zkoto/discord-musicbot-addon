@@ -42,7 +42,7 @@ Allows the bot to join voice as well as speak.
 Required for voice. Discord.js _prefers_ node-opus.  
 
 __Installation:__  
-* `npm install discord.js-musicbot-addon`  
+* `npm install discord-musicbot-addon`  
 
 # Examples
 ***  
