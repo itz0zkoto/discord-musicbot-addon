@@ -7,7 +7,9 @@
 
 # Discord MusicBot Addon
 ***  
-This module is a simple Node.js based music extension/bot for Discord.js projects using YouTube. This was originally an update of an older addon for newer versions of Discord.js but not serves as it's own module.   
+This module is a simple Node.js based music extension/bot for Discord.js projects using YouTube. This was originally an update of an older addon for newer versions of Discord.js but not serves as it's own module.
+This module is clone from [discord.js-musicbot-addon](https://www.npmjs.com/package/discord.js-musicbot-addon) and there has been some improvement, change and addition of the command.
+Thanks to [demisex](https://www.npmjs.com/~demisex) and [DarkoPendragon](https://github.com/DarkoPendragon)
 
 __The commands available are: (default names)__  
 * `musichelp [command]`: Displays help text for commands by this addon, or help for a specific command.
