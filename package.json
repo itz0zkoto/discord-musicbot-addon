@@ -1,5 +1,5 @@
 { 
-  "name": "discord.js-musicbot-addon",
+  "name": "discord-musicbot-addon",
   "license": "ISC",
   "main": "index.js",
   "repository": {
