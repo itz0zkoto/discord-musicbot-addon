@@ -93,7 +93,7 @@ The options you can pass in `music.start(client, {options})` and their types is 
 // Exmaple Map Structure
 {serverID: { prefix: "!" } }
 ```
-See [examples](https://github.com/DarkoPendragon/discord.js-musicbot-addon/blob/master/examples/examples.md) for more info.
+See [examples](https://github.com/1mgr007/discord-musicbot-addon/blob/master/examples/examples.md) for more info.
 ## Cooldown
 | Option | Type | Description | Default |  
 | --- | --- | --- | --- |
