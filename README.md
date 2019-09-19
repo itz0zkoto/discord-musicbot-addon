@@ -7,8 +7,8 @@
 
 # Discord MusicBot Addon
 ***  
-This module is a simple Node.js based music extension/bot for Discord.js projects using YouTube. This was originally an update of an older addon for newer versions of Discord.js but not serves as it's own module.
-This module is clone from [discord.js-musicbot-addon](https://www.npmjs.com/package/discord.js-musicbot-addon) and there has been some improvement, change and addition of the command.
+This module is a simple Node.js based music extension/bot for Discord.js projects using YouTube. This was originally an update of an older addon for newer versions of Discord.js but not serves as it's own module.<br />
+This module is clone from [discord.js-musicbot-addon](https://www.npmjs.com/package/discord.js-musicbot-addon) and there has been some improvement, change and addition of the command.<br />
 Thanks to [demisex](https://www.npmjs.com/~demisex) and [DarkoPendragon](https://github.com/DarkoPendragon)
 
 __The commands available are: (default names)__  
@@ -105,7 +105,7 @@ See [examples](https://github.com/1mgr007/discord-musicbot-addon/blob/master/exa
 | cooldown.exclude | Object/Array | Array of command names to exclude. Uses default names, not set names | ["volume","queue","pause","resume","np"] |  
 
 ## Command Options.  
-Commands pass a bit different. Each command follows the same format as below. Valid commands are `play`, `remove`, `help`, `np`, `queue`, `volume`, `pause`, `resume`, `skip`, `clearqueue`, `loop`, `leave`.
+Commands pass a bit different. Each command follows the same format as below. Valid commands are `play`, `remove`, `help`, `np`, `queue`, `volume`, `pause`, `resume`, `skip`, `clearqueue`, `loop`, `leave`, `join`.
 ```js
 music.start(client, {
   <command>: {
