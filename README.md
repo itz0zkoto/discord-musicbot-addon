@@ -12,7 +12,7 @@ This module is clone from [discord.js-musicbot-addon](https://www.npmjs.com/pack
 Thanks to [demisex](https://www.npmjs.com/~demisex) and [DarkoPendragon](https://github.com/DarkoPendragon)
 
 __The commands available are: (default names)__  
-* `musichelp [command]`: Displays help text for commands by this addon, or help for a specific command.
+* `helpmusic [command]`: Displays help text for commands by this addon, or help for a specific command.
 * `play <url>|<search string>`: Play audio from YouTube.
 * `search <search string>`: Search's for up to 10 videos from YT.
 * `skip [number]`: Skip a song or multi songs with skip [some number].
