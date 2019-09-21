@@ -46,7 +46,7 @@ try {
         this.help = {
           enabled: (options.help == undefined ? true : (options.help && typeof options.help.enabled !== 'undefined' ? options.help && options.help.enabled : true)),
           run: "helpFunction",
-          alt: (options && options.help && options.help.alt) || ["h"],
+          alt: (options && options.help && options.help.alt) || ["hmusic"],
           help: (options && options.help && options.help.help) || "Help for commands.",
           name: (options && options.help && options.help.name) || "helpmusic",
           usage: (options && options.help && options.help.usage) || null,
