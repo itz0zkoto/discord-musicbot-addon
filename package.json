@@ -1,4 +1,4 @@
-{ 
+{
   "name": "discord-musicbot-addon",
   "license": "ISC",
   "main": "index.js",
@@ -7,7 +7,6 @@
     "url": "git+https://github.com/1mgr007/discord-musicbot-addon.git"
   },
   "description": "A simple Node.js based music extension/bot for Discord.js projects using YouTube.",
-  "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,9 +14,10 @@
   "dependencies": {
     "discord.js": "^11.5.1",
     "events": "^3.0.0",
+    "moment-timezone": "^0.5.26",
     "ytdl-core": "^0.29.7",
     "ytpl": "^0.1.16",
     "ytsearcher": "^1.2.2"
   },
-  "version": "1.0.0"
+  "version": "1.4.0"
 }

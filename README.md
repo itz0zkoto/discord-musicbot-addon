@@ -64,8 +64,9 @@ The options you can pass in `music.start(client, {options})` and their types is 
 | messageNewSong | Boolean | Whether or not to send a message when a new song starts playing. | true |
 | bigPicture | Boolean | Whether to use a large (true) image or small (false) for embeds. | false |
 | maxQueueSize | Number | Max queue size allowed. Defaults 100. Set to 0 for unlimited. | 100 |
-| defVolume | Number | The default volume of music. 1 - 200. | 50 |
+| defVolume | Number | The default volume of music. 1 - 200. | 100 |
 | anyoneCanSkip | Boolean | Whether or not anyone can skip. | true |
+| timeZone | String | The default timezone | Asia/Jakarta |
 | messageHelp | Boolean | Whether to message the user on help command usage. If it can't, it will send it in the channel like normal. | false |
 | botAdmins | Object/Array | An array of Discord user ID's to be admins as the bot. They will ignore permissions for the bot. | [ ] |
 | anyoneCanAdjust | Boolean | Whether anyone can adjust volume. | true |
@@ -81,7 +82,7 @@ The options you can pass in `music.start(client, {options})` and their types is 
 | insertMusic | Boolean | Whether or not to insert the music bot data into `<Client>.music` on start. | true |
 | channelWhitelist | Object/Array | Sets a list of ID's allow when running messages. | [ ] |
 | channelBlacklist | Object/Array | Sets a list of ID's ignore when running messages. | [ ] |
-| bitRate | String | Sets the preferred bitRate for the Discord.js stream to use. | "320000" |
+| bitRate | String | Sets the preferred bitRate for the Discord.js stream to use. | "120000" |
 | nextPresence | [PresenceData](https://discord.js.org/#/docs/main/stable/typedef/PresenceData) | PresenceData to set after instead of clearing it (clearPresence). | null |
 
 ## Multi-Prefix Option Example

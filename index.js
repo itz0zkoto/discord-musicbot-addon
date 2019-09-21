@@ -4,6 +4,7 @@ const ytpl = require('ytpl');
 const Discord = require('discord.js');
 const PACKAGE = require('./package.json');
 const EventEmitter = require('events');
+const moment = require("moment-timezone");
 const emitter = new EventEmitter();
 emitter.setMaxListeners(0);
 
@@ -18,7 +19,7 @@ try {
       return false;
     };
     if (moduleAvailable("ffmpeg-binaries")) console.error(new Error("[MUSIC] ffmpeg-binaries was found, this will likely cause problems"));
-    if (!moduleAvailable("ytdl-core") || !moduleAvailable("ytpl") || !moduleAvailable("ytsearcher")) console.error(new Error("[MUSIC] one or more youtube specific modules not found, this module will not work"));
+    if (!moduleAvailable("events") || !moduleAvailable("moment-timezone") || !moduleAvailable("ytdl-core") || !moduleAvailable("ytpl") || !moduleAvailable("ytsearcher")) console.error(new Error("[MUSIC] one or more youtube specific modules not found, this module will not work"));
 
     class Music {
       constructor(client, options) {
@@ -43,14 +44,14 @@ try {
 
         // Help Command options
         this.help = {
-          enabled: (options.help == undefined ? false : (options.help && typeof options.help.enabled !== 'undefined' ? options.help && options.help.enabled : false)),
+          enabled: (options.help == undefined ? true : (options.help && typeof options.help.enabled !== 'undefined' ? options.help && options.help.enabled : true)),
           run: "helpFunction",
-          alt: (options && options.help && options.help.alt) || [],
+          alt: (options && options.help && options.help.alt) || ["h"],
           help: (options && options.help && options.help.help) || "Help for commands.",
-          name: (options && options.help && options.help.name) || "help",
+          name: (options && options.help && options.help.name) || "helpmusic",
           usage: (options && options.help && options.help.usage) || null,
           exclude: Boolean((options && options.help && options.help.exclude)),
-          masked: "help"
+          masked: "helpmusic"
         };
 
         // Pause Command options
@@ -215,6 +216,7 @@ try {
         this.youtubeKey = (options && options.youtubeKey);
         this.botPrefix = (options && options.botPrefix) || "!";
         this.defVolume = (options && options.defVolume) || 100;
+        this.timeZone = (options && options.timeZone) || "Asia/Jakarta";
         this.maxQueueSize = (options && options.maxQueueSize) || 50;
         this.ownerOverMember = (options && typeof options.ownerOverMember !== 'undefined' ? options && options.ownerOverMember : false);
         this.botAdmins = (options && options.botAdmins) || [];
@@ -224,7 +226,6 @@ try {
         this.inlineEmbeds = (options && typeof options.inlineEmbeds !== 'undefined' ? options && options.inlineEmbeds : false);
         this.clearOnLeave = (options && typeof options.clearOnLeave !== 'undefined' ? options && options.clearOnLeave : true);
         this.messageHelp = (options && typeof options.messageHelp !== 'undefined' ? options && options.messageHelp : false);
-        this.dateLocal = (options && options.dateLocal) || 'en-US';
         this.bigPicture = (options && typeof options.bigPicture !== 'undefined' ? options && options.bigPicture : false);
         this.messageNewSong = (options && typeof options.messageNewSong !== 'undefined' ? options && options.messageNewSong : true);
         this.insertMusic = (options && typeof options.insertMusic !== 'undefined' ? options && options.insertMusic : true);
@@ -232,7 +233,7 @@ try {
         this.channelWhitelist = (options && options.channelWhitelist) || [];
         this.channelBlacklist = (options && options.channelBlacklist) || [];
         this.minShuffle = (options && options.shuffle) || 3;
-        this.bitRate = (options && options.bitRate) || "320000";
+        this.bitRate = (options && options.bitRate) || "128000";
 
         // Cooldown Settings
         this.cooldown = {
@@ -531,7 +532,7 @@ try {
           res.requester = msg.author.id;
           if (searchstring.startsWith("https://www.youtube.com/") || searchstring.startsWith("https://youtu.be/")) res.url = searchstring;
           res.channelURL = `https://www.youtube.com/channel/${res.channelId}`;
-          res.queuedOn = new Date().toLocaleDateString(musicbot.dateLocal, { weekday: 'long', hour: 'numeric' });
+          res.queuedOn = moment().locale('en').tz(musicbot.timeZone).calendar();
           if (musicbot.requesterName) res.requesterAvatarURL = msg.author.displayAvatarURL;
           const queue = musicbot.getQueue(msg.guild.id)
           res.position = queue.songs.length ? queue.songs.length : 0;
@@ -734,13 +735,12 @@ try {
         const voiceConnection = client.voiceConnections.find(val => val.channel.guild.id == msg.guild.id);
         if (voiceConnection === null) return msg.channel.send(musicbot.note('fail', 'I\'m not in a voice channel.'));
         if (voiceConnection && voiceConnection.channel.id != msg.member.voiceChannel.id) return msg.channel.send(musicbot.note('fail', `You must be in the same voice channel as me.`));
+        musicbot.emptyQueue(msg.guild.id);
 
         if (!voiceConnection.player.dispatcher) {
-          musicbot.emptyQueue(msg.guild.id);
           voiceConnection.disconnect();
           msg.channel.send(musicbot.note('note', 'Successfully left the voice channel.'));
         } else {
-          musicbot.emptyQueue(msg.guild.id);
           voiceConnection.player.dispatcher.end();
           voiceConnection.disconnect();
           msg.channel.send(musicbot.note('note', 'Successfully left the voice channel.'));
@@ -1203,7 +1203,7 @@ try {
                 result.requester = msg.author.id;
                 if (musicbot.requesterName) result.requesterAvatarURL = msg.author.displayAvatarURL;
                 result.channelURL = `https://www.youtube.com/channel/${result.channelId}`;
-                result.queuedOn = new Date().toLocaleDateString(musicbot.dateLocal, { weekday: 'long', hour: 'numeric' });
+                result.queuedOn = moment().locale('id').tz(musicbot.timeZone).calendar();
                 videos.push(result);
                 if (i === max) {
                   i = 101;
@@ -1423,7 +1423,7 @@ try {
               msg.channel.send(musicbot.note('note', 'Playback finished!'));
               musicbot.emptyQueue(msg.guild.id);
               const voiceConnection = client.voiceConnections.find(val => val.channel.guild.id == msg.guild.id);
-              if (voiceConnection !== null) return client.voiceConnections.find(val => val.channel.guild.id == msg.guild.id);
+              if (voiceConnection !== null) return voiceConnection.disconnect();
             }
           }
 
